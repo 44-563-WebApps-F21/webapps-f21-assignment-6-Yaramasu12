@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Arithmetic caluclations using Java Script</title>
+</head>
+ 
+<body>
+
+<h1>Saikumar Yaramasu Computes</h1>
+
+<script> 
+
+function resolveForm (){
+    console.log("Getting form values")
+    age = document.getElementById("form1_age").value
+    nick = document.getElementById("form1_nick").value
+    confirmed = confirm("Are these the values? "+age+" and "+nick)
+    
+    out = document.getElementById("result")
+    if(confirmed){
+        out.innerHTML = "Values were confirmed"
+    } else {
+        out.innerHTML = "Values were not confirmed"
+    }
+}
+</script>
+<div class="container">
+    <label for="baseElement">Enter a base</label>
+    <input id="baseElement" type="number" name="baseElement" value="10">
+     <br>
+
+     <label for="exponentElement">Enter an exponent</label>
+     <input id="exponentElement" type="number" name="exponentElement" value="2">
+     <br>
+
+     <input type="button" value="Compute" onclick="powers()">
+    </div>
+    
+     <p id="valuesOperation">Values after the operation</p>
+      
+      
+      <script>
+      function powers() {
+        let base=document.getElementById("baseElement").value;
+        let exponent=document.getElementById("exponentElement").value;
+        let updated=document.getElementById("valuesOperation")
+        let result="";
+        for(let i=1;i<=exponent;i++){
+
+            result+=Math.pow(base,i);
+            if (i < exponent) {
+                    result += ", ";
+                }
+                else {
+                    result += " ";
+                }
+        
+            updated.innerHTML="Powers of "+ base + " are: " + result;
+
+        }
+
+      }
+      </script>
+
+  <form>
+        <input type="radio" id="plus" name="operation" value="plus" onclick="processRadio()">  
+           
+        <label for="plus">Plus (+)</label><br>
+      
+        <input type="radio" id="minus" name="operation" 
+           value="minus" onclick="processRadio()">
+        <label for="minus">Minus (-)</label><br>
+      
+        <input type="radio" id="times" name="operation"   
+           value="times" onclick="processRadio()">
+        <label for="times">Multiplication (*)</label><br>
+
+        <input type="radio" id="divide" name="operation"   
+           value="divide" onclick="processRadio()">
+        <label for="divide">Division (/)</label><br>        
+      </form>
+
+      <p id="Operations">After the Arithmetic Operations</p>
+
+      <script>
+          function processRadio(){
+
+            let base=document.getElementById("baseElement").value;
+            let exponent=document.getElementById("exponentElement").value;
+            base = Number(base);
+            exponent = Number(exponent);
+            let updated = document.getElementById("Operations")
+            let output = 0;
+            if(document.getElementById("plus").checked){
+                output= base+exponent;
+            }
+            else if(document.getElementById("minus").checked){
+                output= base-exponent;
+            }
+            else if(document.getElementById("times").checked){
+                output= base*exponent;
+            }
+            else if(document.getElementById("divide").checked){
+                output= base/exponent;
+            }
+            updated.innerHTML="Output of the operation are: " + output;
+          }
+
+      </script>
+
+
+</body>
+</html> 
